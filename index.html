@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creepy Paranormal Website</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Ensure the body takes up full height */
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Container for the background video */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -3; /* Send video behind the content and overlay */
+        }
+
+        video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        /* Content container */
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Button styling */
+        .discover-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            color: #fff;
+            font-family: 'Creepster', cursive; /* Cool paranormal font */
+            background: #ff0033;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.7), 0 0 30px rgba(255, 0, 51, 0.4);
+            cursor: pointer;
+            animation: glow 1.5s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .discover-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 10px rgba(255, 0, 51, 0.4), 0 0 20px rgba(255, 0, 51, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 0, 51, 0.8), 0 0 40px rgba(255, 0, 51, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(255, 0, 51, 0.4), 0 0 20px rgba(255, 0, 51, 0.2);
+            }
+        }
+
+        /* Social media icons */
+        .social-icons {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Paranormal animal effects */
+        .animal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2; /* Overlay between video and content */
+            pointer-events: none;
+        }
+
+        .animal-img {
+            position: absolute;
+            opacity: 0.8; /* Slightly transparent for creepiness */
+            width: 13vw; /* Adjust size as needed */
+            height: auto;
+            pointer-events: none;
+            transition: transform 0.2s ease; /* Smooth transition */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="images/149056-795311505_small.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Paranormal animal overlay -->
+    <div class="animal-overlay" id="animalOverlay">
+        <!-- Add your animal images here -->
+        <img src="images/image-removebg-preview (10).png" class="animal-img">
+        <img src="images/image-removebg-preview (11).png" class="animal-img">
+        <img src="images/image-removebg-preview (12).png" class="animal-img">
+        <img src="images/image-removebg-preview (6).png" class="animal-img">
+        <img src="images/image-removebg-preview (7).png" class="animal-img">
+        <img src="images/image-removebg-preview (8).png" class="animal-img">
+        <img src="images/image-removebg-preview (9).png" class="animal-img">
+        <!-- Additional 10 images -->
+        <img src="images/image-removebg-preview (13).png" class="animal-img">
+        <img src="images/image-removebg-preview (14).png" class="animal-img">
+        <img src="images/image-removebg-preview (15).png" class="animal-img">
+        <img src="images/e.png" class="animal-img">
+        <img src="images/fw.png" class="animal-img">
+        <img src="images/g.png" class="animal-img">
+        <img src="images/image-removebg-preview (s7).png" class="animal-img">
+        <img src="images/s.png" class="animal-img">
+        <img src="images/v.png" class="animal-img">
+        <img src="images/wre.png" class="animal-img">
+    </div>
+
+    <!-- Social media icons -->
+    <div class="social-icons">
+        <a href="https://x.com/paranormal_sol_" target="_blank">
+            <img src="images/twitter.png" alt="Twitter">
+        </a>
+        <a href="https://t.me/+vaZwWRnbgJk5MmJk" target="_blank">
+            <img src="images/telegram.png" alt="Telegram">
+        </a>
+    </div>
+
+    <!-- Discover button -->
+    <button class="discover-btn">Discover the Paranormal</button>
+
+    <div class="content">
+        <p></p>
+    </div>
+
+    <script>
+        // Function to randomly place each animal image
+        function randomizePositions() {
+            const animals = document.querySelectorAll('.animal-img');
+            animals.forEach(animal => {
+                const x = Math.random() * (window.innerWidth - 100); // Random x position
+                const y = Math.random() * (window.innerHeight - 100); // Random y position
+                animal.style.left = `${x}px`;
+                animal.style.top = `${y}px`;
+            });
+        }
+
+        // Initial call to set random positions
+        randomizePositions();
+
+        // Cursor movement logic
+        document.addEventListener('mousemove', (event) => {
+            const x = event.clientX;
+            const y = event.clientY;
+            const animals = document.querySelectorAll('.animal-img');
+
+            animals.forEach(animal => {
+                const rect = animal.getBoundingClientRect();
+                const animalX = rect.left + rect.width / 2;
+                const animalY = rect.top + rect.height / 2;
+
+                const angle = Math.atan2(y - animalY, x - animalX);
+                const distance = 20; // Maximum distance from original position
+
+                const offsetX = Math.cos(angle) * distance;
+                const offsetY = Math.sin(angle) * distance;
+
+                animal.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            });
+        });
+    </script>
+
+</body>
+</html>
